@@ -1,3 +1,5 @@
+Customer Website: https://vichu-meats.onrender.com/
+Admin Login Portal: https://vichu-meats.onrender.com/login
 # Vichu Meats
 
 Local-first Java 21 / Spring Boot website with Thymeleaf, Spring Security, Spring Data JPA and a persistent file-based H2 database. Open one folder in VS Code. No Python, Node, React, external database installation or separate Maven installation is needed.
