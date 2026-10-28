@@ -1,5 +1,46 @@
-Customer Website: https://vichu-meats.onrender.com/
-Admin Login Portal: https://vichu-meats.onrender.com/login
+# 🥩 Vichu Meats – Online Meat Ordering System
+
+Welcome to **Vichu Meats**! 🛒 A web-based meat ordering application built using Java and Spring Boot.
+
+## 🌐 Live Website Links
+
+🛍️ **Customer Website:**  
+👉 https://vichu-meats.onrender.com/
+
+🔐 **Admin Login Portal:**  
+👉 https://vichu-meats.onrender.com/login
+
+## ✨ Features
+
+### 🛒 Customer Features
+- 🥩 Browse available meat products
+- 💰 View product details and pricing
+- 📦 Place orders using the available ordering features
+
+### 🛡️ Admin Features
+- 🔑 Secure admin login
+- 📝 Manage products and prices, if supported by the dashboard
+- 📋 Review and manage customer orders, if supported
+
+## 💻 Technology Stack
+- ☕ Java 21
+- 🍃 Spring Boot
+- 🗄️ Spring Data JPA / Hibernate
+- 💾 H2 Database
+- 🛠️ Maven
+
+## 📂 Source Code
+🔗 **GitHub Repository:**  
+https://github.com/prajit242006/vichu-meats
+
+## 👨‍💻 Project Purpose
+This project demonstrates an online meat ordering system with a customer-facing website and a separate admin login portal.
+
+🚀 **Try the live website using the links above!**
+
+_Note: The website may take a little time to load after a period of inactivity on free hosting._
+
+
 # Vichu Meats
 
 Local-first Java 21 / Spring Boot website with Thymeleaf, Spring Security, Spring Data JPA and a persistent file-based H2 database. Open one folder in VS Code. No Python, Node, React, external database installation or separate Maven installation is needed.
