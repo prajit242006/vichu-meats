@@ -16,3 +16,4 @@ EXPOSE 8080
 ENV BIND_ADDRESS=0.0.0.0
 
 ENTRYPOINT ["java", "-jar", "app.jar"]
+ 
