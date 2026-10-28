@@ -1,0 +1,11 @@
+document.querySelector('.menu-toggle')?.addEventListener('click', e => {const open=e.currentTarget.getAttribute('aria-expanded')!=='true';e.currentTarget.setAttribute('aria-expanded',String(open));document.getElementById('navlinks').classList.toggle('open',open);});
+const fulfilment=document.getElementById('fulfilment'); const area=document.getElementById('area');
+function total(){if(!fulfilment)return;const delivery=fulfilment.value==='Delivery';const block=document.getElementById('delivery-fields');block.hidden=!delivery;block.querySelectorAll('input,textarea,select').forEach(x=>{x.disabled=!delivery;x.required=delivery;});const output=document.getElementById('checkout-total');const fee=delivery?Number(area?.selectedOptions[0]?.dataset.fee||0):0;output.textContent='Requested total ₹'+(Number(output.dataset.subtotal)+fee).toFixed(2);}
+fulfilment?.addEventListener('change',total);area?.addEventListener('change',total);total();
+document.getElementById('print-button')?.addEventListener('click',()=>window.print());
+document.querySelectorAll('form').forEach(form=>form.addEventListener('submit',()=>{const button=form.querySelector('[data-submit]');if(button){button.disabled=true;button.textContent='Saving request…';}}));
+
+// Only product IDs and quantities are retained here. Never store customer information.
+(async()=>{try{const response=await fetch('/api/cart');if(!response.ok)return;let state=await response.json();let saved;try{saved=JSON.parse(localStorage.getItem('vichu-cart')||'{}');}catch{saved={};}
+if(!state.authoritative&&Object.keys(state.items).length===0&&Object.keys(saved).length){const header=document.querySelector('meta[name="csrf-header"]').content;const token=document.querySelector('meta[name="csrf-token"]').content;const restored=await fetch('/api/cart/restore',{method:'POST',headers:{'Content-Type':'application/json',[header]:token},body:JSON.stringify(saved)});if(restored.ok){state=await restored.json();localStorage.setItem('vichu-cart',JSON.stringify(state.items));location.reload();return;}localStorage.removeItem('vichu-cart');return;}
+localStorage.setItem('vichu-cart',JSON.stringify(state.items));}catch{/* Session cart still works when storage is unavailable. */}})();
