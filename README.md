@@ -1,8 +1,10 @@
 # 🥩 Vichu Meats – Online Meat Ordering System
 
-Welcome to **Vichu Meats**! 🛒 A web-based meat ordering application built using Java and Spring Boot.
+Welcome to **Vichu Meats**! 🛒
 
-## 🌐 Live Website Links
+Vichu Meats is a web-based meat ordering application built using **Java 21 and Spring Boot**. It provides a customer-facing website and a separate admin portal for managing the product catalogue and order requests.
+
+## 🌐 Live Demo
 
 🛍️ **Customer Website:**  
 👉 https://vichu-meats.onrender.com/
@@ -10,119 +12,217 @@ Welcome to **Vichu Meats**! 🛒 A web-based meat ordering application built usi
 🔐 **Admin Login Portal:**  
 👉 https://vichu-meats.onrender.com/login
 
+💻 **GitHub Repository:**  
+👉 https://github.com/prajit242006/vichu-meats
+
+> ℹ️ The application is hosted on Render's free instance. After inactivity, the first request may take around 50 seconds or longer to load.
+
+---
+
 ## ✨ Features
 
 ### 🛒 Customer Features
-- 🥩 Browse available meat products
-- 💰 View product details and pricing
-- 📦 Place orders using the available ordering features
+- 🥩 Browse the available product catalogue.
+- 📋 View product details and available options.
+- 💰 Check configured prices or contact the owner for a quote.
+- 🛍️ Add available products to the cart.
+- 📦 Submit order requests through the website.
 
 ### 🛡️ Admin Features
-- 🔑 Secure admin login
-- 📝 Manage products and prices, if supported by the dashboard
-- 📋 Review and manage customer orders, if supported
+- 🔑 Separate admin login portal.
+- 📝 Manage product information and catalogue options.
+- 💵 Configure product prices.
+- 📊 Review customer order requests.
+- 📦 Manage product availability and stock settings.
+- ⚙️ Configure supported business settings and contact details.
+
+*Available actions depend on the features enabled in the deployed application.*
+
+---
 
 ## 💻 Technology Stack
-- ☕ Java 21
-- 🍃 Spring Boot
-- 🗄️ Spring Data JPA / Hibernate
-- 💾 H2 Database
-- 🛠️ Maven
 
-## 📂 Source Code
-🔗 **GitHub Repository:**  
-https://github.com/prajit242006/vichu-meats
+| Technology | Purpose |
+|---|---|
+| ☕ Java 21 | Programming language |
+| 🍃 Spring Boot 3.5.7 | Backend application framework |
+| 🎨 Thymeleaf | Server-rendered web pages |
+| 🔐 Spring Security | Authentication and access control |
+| 🗄️ Spring Data JPA | Database access |
+| 🧩 Hibernate | ORM |
+| 💾 H2 Database | File-based database |
+| 🛠️ Maven | Build and dependency management |
+| 🚀 Render | Application hosting |
 
-## 👨‍💻 Project Purpose
-This project demonstrates an online meat ordering system with a customer-facing website and a separate admin login portal.
+---
 
-🚀 **Try the live website using the links above!**
+## 🚀 Run the Project Locally
 
-_Note: The website may take a little time to load after a period of inactivity on free hosting._
+### Prerequisites
+- Java Development Kit (JDK) 21
+- Visual Studio Code
+- Extension Pack for Java (Microsoft)
+- Internet access for the initial dependency download
 
+### Step 1: Clone the Repository
 
-# Vichu Meats
-
-Local-first Java 21 / Spring Boot website with Thymeleaf, Spring Security, Spring Data JPA and a persistent file-based H2 database. Open one folder in VS Code. No Python, Node, React, external database installation or separate Maven installation is needed.
-
-## Windows 11 setup — step by step
-
-1. Install **JDK 21**, not just a JRE. One source is [Eclipse Temurin](https://adoptium.net/temurin/releases/?version=21). Select Windows x64 JDK and enable the installer's JAVA_HOME and PATH options. Restart VS Code after installing. In a new PowerShell terminal run `java -version`; it should say 21. If another Java appears, correct JAVA_HOME and PATH first.
-2. Install **VS Code**, then its **Extension Pack for Java** by Microsoft.
-3. Right-click the ZIP → Extract All. Open the extracted **vichu-meats** folder in VS Code (File → Open Folder). This is the folder containing `pom.xml` and `mvnw.cmd`. Do not run inside the ZIP.
-4. Open Terminal → New Terminal, using PowerShell. Prepare your first owner account in that terminal:
-
-   ```powershell
-   $env:ADMIN_USERNAME = "vichuowner"
-   $securePassword = Read-Host "Choose an owner password (at least 12 characters)" -AsSecureString
-   $env:ADMIN_PASSWORD = [System.Net.NetworkCredential]::new("", $securePassword).Password
-   ```
-
-   The username must be 3–50 letters, numbers, dots, underscores or hyphens. Choose your own password. There is no default password. Never put credentials in Git, screenshots or source files.
-5. Run:
-
-   ```powershell
-   .\mvnw.cmd spring-boot:run
-   ```
-
-   The first run downloads Maven and Java dependencies, so it requires internet and can take several minutes. The wrapper JAR is included. Later runs reuse cached downloads. If Windows says Java is missing, return to step 1. If a firewall/proxy blocks Maven Central, allow the official Maven download domain using your network administrator's instructions.
-6. Wait for the application to start. Open **http://localhost:8080**.
-7. Open **http://localhost:8080/admin** and log in with the credentials you chose. The initial owner is created only when the admin table is empty. Later starts do not reset the stored password. If you start without credentials, the public site still works, but no owner can sign in; stop it and repeat steps 4–5.
-8. Open **Products**, edit the starter products and add real prices to each option. Blank price means **Contact for price**; no zero-price checkout is allowed. Milk starts with 100 ml and 200 ml options. Add chicken weights and egg packs as individual options. Use complete option prices: a “500 g” chicken option has the price for 500 g, not an automatic per-kg conversion. Clear the preview label only after owner review. Configure contact details and any delivery areas/payment preferences under Settings.
-9. Stop with **Ctrl+C** in the terminal. Restart from the same project folder using the command in step 5. Your products and orders remain in `data/`. After the first successful setup, you can remove the password from your terminal environment:
-
-   ```powershell
-   Remove-Item Env:ADMIN_PASSWORD -ErrorAction SilentlyContinue
-   Remove-Item Env:ADMIN_USERNAME -ErrorAction SilentlyContinue
-   ```
-
-10. Back up safely: stop the application first, then copy the entire **data** and **uploads** folders to private storage. Keep both together. Restore them while the application is stopped, with the same DB_PASSWORD if configured. These contain customer information. Do not upload them to GitHub. A running H2 database should not be copied as a normal file backup.
-
-## Preview data and real use
-
-`DEMO_DATA` defaults to `true`. On an empty database it creates three visibly labelled preview catalogue products, with **no invented prices**, no contact numbers, no opening hours and no enabled payment or delivery options. All generated orders containing a preview product are marked preview, including in historical records.
-
-For real use, set this before starting:
+Open PowerShell or a terminal and run:
 
 ```powershell
-$env:DEMO_DATA = "false"
+git clone https://github.com/prajit242006/vichu-meats.git
+cd vichu-meats
 ```
 
-This prevents new preview seeding. It **does not erase or automatically hide existing products**. Review and clear their preview flags (or uncheck visibility), set accurate prices and replace illustrations. Completed value excludes preview orders. Completed counts are separate from requests; no dashboard total represents collected payments.
+Alternatively, download the repository as a ZIP from GitHub and extract it.
 
-## Optional environment configuration
+### Step 2: Open in VS Code
 
-| Variable | Default | Purpose |
-|---|---|---|
-| ADMIN_USERNAME / ADMIN_PASSWORD | none | First empty-database owner setup only |
-| DEMO_DATA | true | Seed a labelled preview catalogue if empty |
-| DATA_DIR | ./data | H2 database directory (outside target) |
-| UPLOAD_DIR | ./uploads | Persistent image directory |
-| DB_PASSWORD | empty | Optional local H2 password; set before first database creation and retain for all subsequent starts/backups |
-| BIND_ADDRESS | 127.0.0.1 | Local-only binding; do not change for local preview |
+Open the extracted `vichu-meats` project folder in Visual Studio Code. Make sure the folder contains `pom.xml` and `mvnw.cmd`.
 
-There is no password recovery by email. Keep owner credentials safely. For a disposable preview only, stopping and deleting `data/` resets everything, **including all orders**. Never do this to a live business database.
+Check your Java version:
 
-## Checks
+```powershell
+java -version
+```
+
+Use Java 21.
+
+### Step 3: Configure the Initial Admin Account
+
+For a fresh local database, open PowerShell in the project directory and run:
+
+```powershell
+$env:ADMIN_USERNAME = "vichuowner"
+$securePassword = Read-Host "Enter an owner password (at least 12 characters)" -AsSecureString
+$env:ADMIN_PASSWORD = [System.Net.NetworkCredential]::new("", $securePassword).Password
+```
+
+Choose your own strong password. Do not publish credentials in GitHub or share them in screenshots.
+
+### Step 4: Start the Application
+
+```powershell
+.\mvnw.cmd spring-boot:run
+```
+
+Wait for Spring Boot to finish starting.
+
+### Step 5: Open the Website
+
+🌐 Customer website: http://localhost:8080/
+
+🔐 Admin portal: http://localhost:8080/admin
+
+Use the credentials configured in Step 3.
+
+### Step 6: Configure the Catalogue
+
+After logging in, review the starter products and configure accurate prices, product options, availability, contact details and other required business settings before accepting real orders.
+
+To stop the application, press `Ctrl + C` in the terminal.
+
+---
+
+## ⚙️ Environment Configuration
+
+| Variable | Purpose |
+|---|---|
+| `ADMIN_USERNAME` | Username for initial owner setup |
+| `ADMIN_PASSWORD` | Password for initial owner setup |
+| `DEMO_DATA` | Controls preview catalogue seeding |
+| `DATA_DIR` | Database storage directory |
+| `UPLOAD_DIR` | Uploaded image storage directory |
+| `DB_PASSWORD` | Optional H2 database password |
+| `BIND_ADDRESS` | Application network binding address |
+
+The application's default configuration is intended for local development. For hosted deployment, configure the appropriate environment variables in the hosting dashboard.
+
+**Security:** Never commit passwords, private customer data, database files or uploaded customer/business data to GitHub.
+
+---
+
+## 🗄️ Database and Data Storage
+
+Vichu Meats uses a file-based H2 database.
+
+- The local database directory defaults to `./data`.
+- Uploaded files default to `./uploads`.
+- These runtime folders are excluded from Git using `.gitignore`.
+- Back up important data securely and avoid copying a running H2 database as an ordinary file backup.
+
+⚠️ **Hosting note:** Render's free web services do not provide persistent disk storage by default. Data stored only in the container filesystem may be lost when the service restarts or is redeployed. Persistent storage or an appropriate external database is recommended before using the application for real customer orders.
+
+---
+
+## 🧪 Run Tests
+
+To run the project's automated tests:
 
 ```powershell
 .\mvnw.cmd test
 ```
 
-See TEST_REPORT.md for checks actually performed for this delivery. Tests use an isolated in-memory database and test-only customer details. They do not modify the normal `data/` folder.
+Refer to `TEST_REPORT.md` for the test results documented in the repository.
 
-## Project layout
+---
 
-- `src/main/java/com/vichumeats/{config,controller,dto,entity,repository,service}`
-- `src/main/resources/templates` — public and owner Thymeleaf pages
-- `src/main/resources/static/{css,js,images}` — all local assets
-- `.mvn/wrapper`, `mvnw`, `mvnw.cmd` — Maven wrapper
-- `data/`, `uploads/` — runtime folders, deliberately excluded from Git and ZIP
+## 📁 Project Structure
 
-## Current scope
+```text
+vichu-meats/
+├── src/
+│   └── main/
+│       ├── java/com/vichumeats/
+│       │   ├── config/
+│       │   ├── controller/
+│       │   ├── dto/
+│       │   ├── entity/
+│       │   ├── repository/
+│       │   └── service/
+│       └── resources/
+│           ├── templates/
+│           └── static/
+├── .mvn/
+├── data/                 # Runtime data; excluded from Git
+├── uploads/              # Runtime uploads; excluded from Git
+├── pom.xml
+├── mvnw
+├── mvnw.cmd
+├── Dockerfile
+├── README.md
+└── TEST_REPORT.md
+```
 
-A single local process, order **requests**, boolean availability, integer counts of configurable sized options, no online payments or automatic messages. Currency and deposits use backend BigDecimal. Sheep pricing is a manually entered estimated quote with an explicit owner-confirmed basis. Cart IDs/quantities can survive browser restarts through localStorage; checkout personal fields do not. Server session checkout and confirmation expire; references are shown at submission and visible to the owner. Public order lookup is intentionally absent.
+---
 
-Default artwork is original **illustration placeholder** artwork, not real farm photographs. A phone or WhatsApp number must be configured before remote product-price enquiries are useful. All first-run products require price enquiry until configured.
+## 🔒 Security and Production Readiness
 
-Public deployment is a separate task. Before it, review current supported dependency/security updates, HTTPS, secure cookies, backups, record retention, account recovery, network-specific rate limiting and a persistent host disk. The included throttle is per process and resets on restart; it is appropriate for a local prototype, not a substitute for deployment protections. This project has not been published.
+Before using this application for a real business:
+
+- 🔐 Use a strong, private admin password.
+- 🛡️ Verify that admin-only pages and actions require authentication.
+- 💾 Configure persistent storage and regular backups.
+- 🔒 Review HTTPS, session security and access controls.
+- 📋 Test the full customer order and admin management workflow.
+- 💳 Do not assume online payments are supported; the current documented scope does not include an integrated payment gateway.
+- 📞 Configure valid contact details before inviting customers to make enquiries.
+
+---
+
+## 📌 Project Scope
+
+Vichu Meats is designed for product browsing, configurable catalogue options and customer order requests. Its documented scope includes manually configured prices, product availability and owner-reviewed order handling.
+
+It does not include an integrated online payment gateway or automatic customer messaging in the documented scope. Verify all features against the currently deployed version before relying on them for business operations.
+
+---
+
+## 👨‍💻 Project Information
+
+**Project Name:** Vichu Meats – Online Meat Ordering System  
+**Backend:** Java 21 / Spring Boot  
+**Database:** H2  
+**Hosting:** Render  
+**Source Code:** https://github.com/prajit242006/vichu-meats
+
+🚀 **Explore the live website and its admin portal using the links at the top of this README!**
