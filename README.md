@@ -12,8 +12,6 @@ Vichu Meats is a web-based meat ordering application built using **Java 21 and S
 🔐 **Admin Login Portal:**  
 👉 https://vichu-meats.onrender.com/login
 
-💻 **GitHub Repository:**  
-👉 https://github.com/prajit242006/vichu-meats
 
 > ℹ️ The application is hosted on Render's free instance. After inactivity, the first request may take around 50 seconds or longer to load.
 
